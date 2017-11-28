@@ -35,21 +35,18 @@ def get_user(user_id):
     })
 
 
-@app.route('/users', methods=['POST'])
+@app.route("/users", methods=["POST"])
 def create_user():
     user_id = request.json.get('userId')
     name = request.json.get('name')
-
     if not user_id or not name:
-        return jsonify({
-            'error': 'Missing userId or name'
-        }), 400
+        return jsonify({'error': 'Please provider userId and name'}), 400
 
-    dynamo_client.put_item(
+    resp = dynamo_client.put_item(
         TableName=USERS_TABLE,
         Item={
-            'userId': {'S', user_id},
-            'name': {'S', name}
+            'userId': {'S': user_id},
+            'name': {'S': name}
         }
     )
 
