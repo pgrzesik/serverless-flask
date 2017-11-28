@@ -1,0 +1,14 @@
+{
+  "name": "serverless-flask",
+  "version": "1.0.0",
+  "description": "Sample serverless app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "serverless"
+  ],
+  "author": "Piotr Grzesik <pj.grzesik@gmail.com>",
+  "license": "MIT"
+}
