@@ -11,6 +11,7 @@ custom:
     packRequirements: false
   pythonRequirements:
     dockerizePip: true
+  tableName: 'users-table-${self.provider.stage}'
 
 provider:
   name: aws
@@ -24,3 +25,21 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+
+resources:
+  Resources:
+    UserDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: userId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.tableName}
