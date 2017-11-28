@@ -1,6 +1,7 @@
 import os
 
 import boto3
+
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
@@ -26,7 +27,7 @@ def get_user(user_id):
     if not item:
         return jsonify({
             'error': 'User does not exist'
-        }, 404)
+        }), 404
 
     return jsonify({
         'userId': item.get('userId').get('S'),
@@ -42,7 +43,7 @@ def create_user():
     if not user_id or not name:
         return jsonify({
             'error': 'Missing userId or name'
-        }, 400)
+        }), 400
 
     dynamo_client.put_item(
         TableName=USERS_TABLE,
