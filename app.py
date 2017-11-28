@@ -1,7 +1,7 @@
 import os
 
 import boto3
-from flask import Flask, jsonfiy, request
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -25,8 +25,8 @@ def get_user(user_id):
 
     if not item:
         return jsonify({
-            'error': 'User does not exist', 404
-        })
+            'error': 'User does not exist'
+        }, 404)
 
     return jsonify({
         'userId': item.get('userId').get('S'),
