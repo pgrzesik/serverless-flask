@@ -34,16 +34,16 @@ provider:
 
 functions:
   app:
-    handler: index.handler
+    handler: wsgi.handler
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
   getUser:
-    handler: index.handler
+    handler: wsgi.handler
     events:
       - http: 'GET /users/{proxy+}'
   createUser:
-    handler: index.handler
+    handler: wsgi.handler
     events:
       - http: 'POST /users'
      
