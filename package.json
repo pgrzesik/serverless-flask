@@ -10,5 +10,9 @@
     "serverless"
   ],
   "author": "Piotr Grzesik <pj.grzesik@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-python-requirements": "^3.0.10",
+    "serverless-wsgi": "^1.4.2"
+  }
 }
